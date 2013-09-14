@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8" />
+		<title>Calendar by qaa12</title>
+		<meta name="description" content="Календарь" />
+		<link href="style.css" rel="stylesheet" />	  
+	</head>
+	<body>
+	
+		<div id="header">
+			<div class="wrap">
+				<span class="button">Добавить</span>
+				<span class="button">Обновить</span>
+				<form action="">
+					<input type="text" name="fname" placeholder=" Событие, дата или участник"><br>
+				</form>
+			</div>
+		</div> <!-- header -->
+
+		<div id="content" class="wrap">
+			<div id="topbar">
+				<span id="left_arrow" class="arrow shadow">&#9666;</span>
+				<span id="month">Март 2013</span>
+				<span id="right_arrow" class="arrow shadow">&#9656;</span>
+				<span class="today shadow">Сегодня</span>
+			</div>
+			<div id="calendar">
+				<div id="day7" class="day">Воскресенье</div>
+			</div>
+		</div> <!-- content -->
+<div>
+		<script type="text/javascript">
+			var offset = 0;
+			function updateCalendar(offset){
+				var month_name_ru = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+				var days_name_ru = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+				var today = new Date();
+				today = new Date(today.getFullYear(), today.getMonth()+offset, today.getDate());
+				var daysCount = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();
+				var prevDaysCount = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+				var firstDay = new Date(today.getFullYear(),today.getMonth(), 1).getDay();
+				if(firstDay==0){
+					firstDay=7;
+				}
+				var sumDays = 0;
+				var html_month = document.getElementById('month');
+				html_month.innerHTML = month_name_ru[today.getMonth()] + ' ' + today.getFullYear();
+				document.getElementById('calendar').innerHTML = '';
+				//Вставка дней пред месяац
+				for(var i=1; i<firstDay; i++){
+					var newDiv = document.createElement('div');
+					newDiv.id = 'day'+(i);
+					newDiv.className = 'day';
+					newDiv.innerHTML = (typeof(days_name_ru[i-1]) == "undefined" ? "" : days_name_ru[i-1]+',  ')+(prevDaysCount-firstDay+i+1);
+					document.getElementById('calendar').appendChild(newDiv);
+					sumDays+=1;
+				}
+				//Вставка дней текущего месяца
+				for(var i=1; i<=daysCount; i++){
+					var newDiv = document.createElement('div');
+					newDiv.id = 'day'+(firstDay+i-1);
+					newDiv.className = 'day';
+					if (i==today.getDate() && offset==0){
+						newDiv.className = 'day dayToday';
+					}
+					newDiv.innerHTML = (typeof(days_name_ru[firstDay+i-2]) == "undefined" ? "" : days_name_ru[firstDay+i-2]+',  ')+i;
+					newDiv.onclick = function(){
+						var dayClick = document.querySelector('.dayClick');
+						if(dayClick != null){
+							dayClick.classList.remove("dayClick");
+						}
+						this.classList.add("dayClick");
+					}
+					document.getElementById('calendar').appendChild(newDiv);
+					sumDays+=1;
+				}
+				for(var i=0; i<7-sumDays%7; i++){
+					var newDiv = document.createElement('div');
+					newDiv.id = 'day'+(sumDays+i);
+					newDiv.className = 'day';
+					newDiv.innerHTML = i+1;
+					document.getElementById('calendar').appendChild(newDiv);
+				}
+			}
+			updateCalendar(offset);
+			document.getElementById('right_arrow').onclick = function(){
+				updateCalendar(++offset);
+			}
+			document.getElementById('left_arrow').onclick = function(){
+				updateCalendar(--offset);
+			}
+		</script>
+
+	</body>
+</html>

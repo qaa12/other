@@ -1,0 +1,139 @@
+body{
+	margin: 0px;
+	font-family: Arial;
+	font-size: 14px;
+}
+
+#header{
+	height: 100px;
+	background-color: #F4F4F4;
+	-moz-box-shadow: 0 0 5px #888; /* Для Firefox */
+    -webkit-box-shadow: 0 0 5px #888; /* Для Safari и Chrome */
+    box-shadow: 0 0 5px #888; /* Параметры тени */
+}
+
+.button{
+	background-color: #006FCA;
+	padding: 6px 10px;
+	margin-left: 8px;
+	border-radius: 2px;
+	display: inline-block;
+	color: #FFF;
+	font-size: 12px;
+	text-shadow: 0px 0px 2px #222;
+	font-weight: bold;
+	-moz-box-shadow: 0px 1px 2px 0px #888; /* Для Firefox */
+    -webkit-box-shadow:0px 1px 2px 0px #888; /* Для Safari и Chrome */
+    box-shadow: 0px 1px 2px 0px #888;
+}
+
+.button:active{
+	color: #C2D0E3;
+	background-color: #005BA6;
+	-moz-box-shadow: inset 0px 1px 2px 0px #222; /* Для Firefox */
+    -webkit-box-shadow: inset 0px 1px 2px 0px #222; /* Для Safari и Chrome */
+    box-shadow: inset 0px 1px 2px 0px #222;
+}
+
+form{
+	display: inline-block;
+	float: right;
+}
+
+form input{
+	border-radius: 3px;
+	height: 24px;
+	-moz-box-shadow: inset 0px 0px 3px 0px #AAA; /* Для Firefox */
+    -webkit-box-shadow: inset 0px 0px 3px 0px #AAA;
+	box-shadow: inset 0px 0px 3px 0px #AAA;
+	min-width: 200px;
+	/*border-top: 2px inset #AAA;*/
+}
+
+.wrap{
+	width: 1000px;
+	margin:0 auto;
+}
+
+#header .wrap{
+	padding: 50px 60px 0px 60px;
+}
+#content.wrap{
+	padding: 0px 60px 0px 60px;
+}
+
+#topbar{
+		padding: 12px 0px;
+}
+
+#month{
+	font-size: 18px;
+}
+
+span.shadow{
+	font-size: 9px;
+	margin: 5px;
+	padding:2px 5px 3px 5px;
+	border-radius: 2px;
+	-moz-box-shadow: 0 0 3px #888; /* Для Firefox */
+	-webkit-box-shadow: 0 0 3px #888; /* Для Safari и Chrome */
+    box-shadow: 0 0 3px #888; /* Параметры тени */
+    vertical-align: top;
+	color: #666;
+	line-height: 2;
+	vertical-align: top;
+}
+
+span.today{
+	font-size: 11px;
+	padding: 2px 5px 0px 5px;
+}
+
+span.arrow{
+	cursor: pointer;
+}
+
+#calendar{
+	padding-left: 7px;
+}
+
+.day{
+	position: relative;
+	color: #666;
+	font-size: 12px;
+	width: 124px;
+	height: 110px;
+	display: inline-block;
+	margin-top: -1px;
+	margin-left: -5px;
+	margin-right: 4px;
+	padding: 8px;
+	border: 1px solid #DDD;
+	z-index: 1;
+}
+
+.day:hover{
+	background-color: #F4F4F4;
+}
+
+.dayClick{
+	background-color: #E5F1F9;
+	border: 2px solid #88BEEB;
+	width: 123px;
+	height: 109px;
+	margin-top: -2px;
+	margin-left: -6px;
+	margin-right: 4px;
+	z-index: 10;
+}
+
+.dayClick:hover{
+	background-color: #C1E4FF;
+}
+
+.day.fill{
+	background-color: #C1E4FF;
+}
+.dayToday{
+	background-color: #999;
+}
